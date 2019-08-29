@@ -1,0 +1,47 @@
+Tarea
+
+(1)Loop con for
+
+prime <- c(0:99) 
+datos <- c()
+for(val in prime){
+  if (val < 2)
+    next
+  else {
+    f = FALSE
+    for (temp in 2:sqrt(99))
+      if (val %% temp == 0 && val > temp){
+        f = TRUE
+        break  
+      }
+    if (f) next
+    datos = c(datos, val) ### una vez arrojados los valores primos, sustituir "datos = c(val) por datos = c(datos, val)"
+  } 
+  print (datos)
+}
+sum(datos[2:26]) ### terminado el loop suma los datos del 2 al 26
+
+
+(2)Loop con while
+
+
+
+(3) Alternativa
+
+prime_numbers <- function(n) {
+  if (n >= 2) {
+    x = seq(2, n)
+    prime_nums = c()
+    for (i in seq(2, n)) {
+      if (any(x == i)) {
+        prime_nums = c(prime_nums, i)
+        x = c(x[(x %% i) != 0], i)
+      }
+    }
+    return(prime_nums)
+  }
+} 
+prime_numbers(99)
+prime_numbers <- Vectorize(prime_numbers)
+sum(prime_numbers(99))
+
